@@ -1,112 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
 
-<!DOCTYPE html>
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  <title>alykoff.github.io</title>
-  <meta name="author" content="Alykoff">
-
-  
-  <meta name="description" content="&#8220;Супер волны&#8221; по мотивам Jorg Reuter&#8217;s SinusPlasma sketch Поначалу я начал изучать вышеназванную SinusPlasma, причем изучаемая &hellip;">
-  
-
-  <!-- http://t.co/dKP3o1e -->
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  
-  <link rel="canonical" href="http://alykoff.github.io">
-  <link href="/favicon.png" rel="icon">
-  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <link href="/atom.xml" rel="alternate" title="alykoff.github.io" type="application/atom+xml">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
-  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
-<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-
-  
-  <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-40686601-1']);
-    _gaq.push(['_trackPageview']);
-
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-  </script>
-
-
-</head>
-
-<body   >
-  <header role="banner"><hgroup>
-  <h1><a href="/">alykoff.github.io</a></h1>
-  
-    <h2>влияние наблюдения на предмет наблюдения</h2>
-  
-</hgroup>
-
-</header>
-  <nav role="navigation"><ul class="subscription" data-subscription="rss">
-  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
-  
-</ul>
-  
-<form action="http://google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="q" value="site:alykoff.github.io" />
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
-</form>
-  
-<ul class="main-navigation">
-  <li><a href="/">Blog</a></li>
-  <li><a href="/blog/archives">Archives</a></li>
-</ul>
-
-</nav>
-  <div id="main">
-    <div id="content">
-      <div class="blog-index">
-  
-  
-  
-    <article>
-      
-  <header>
+  <title><![CDATA[alykoff.github.io]]></title>
+  <link href="http://alykoff.github.io/atom.xml" rel="self"/>
+  <link href="http://alykoff.github.io/"/>
+  <updated>2013-05-10T22:50:08+04:00</updated>
+  <id>http://alykoff.github.io/</id>
+  <author>
+    <name><![CDATA[Alykoff]]></name>
     
-      <h1 class="entry-title"><a href="/blog/2013/05/10/super-wave/">Супер волны [Processing]</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
 
   
-
-
-<time datetime="2013-05-10T21:45:00+04:00" pubdate data-updated="true">May 10<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>
+  <entry>
+    <title type="html"><![CDATA[Супер волны [processing]]]></title>
+    <link href="http://alykoff.github.io/blog/2013/05/10/super-wave/"/>
+    <updated>2013-05-10T21:45:00+04:00</updated>
+    <id>http://alykoff.github.io/blog/2013/05/10/super-wave</id>
+    <content type="html"><![CDATA[<p>
     &#8220;Супер волны&#8221; по мотивам Jorg Reuter&#8217;s <a href="http://stachelig.de/">SinusPlasma sketch</a>
 </p>
 <p>
@@ -117,7 +29,7 @@
   После того как я получил результат, который был приятен моему глазу я решил портировать его на processing.js (и это было не сложно!) и вот что получилось:
 </p>
 
-<script src="/javascripts/libs/processing-1.4.1.min.js"></script>
+<script src="http://alykoff.github.io/javascripts/libs/processing-1.4.1.min.js"></script>
 <script type="text/processing" data-processing-target="mycanvas">
     int SCREENWIDTH = 220;
     int SCREENHEIGHT = 120;
@@ -318,42 +230,15 @@
 </span><span class='line'>  <span class="nx">mixY</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 </span><span class='line'>  <span class="nx">maxY</span> <span class="o">=</span> <span class="mi">120</span><span class="p">;</span>
 </span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure></div>
+</span></code></pre></td></tr></table></div></figure>]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/05/10/first-story/">Кофеварка</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-05-10T14:56:00+04:00" pubdate data-updated="true">May 10<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>
+  <entry>
+    <title type="html"><![CDATA[Кофеварка]]></title>
+    <link href="http://alykoff.github.io/blog/2013/05/10/first-story/"/>
+    <updated>2013-05-10T14:56:00+04:00</updated>
+    <id>http://alykoff.github.io/blog/2013/05/10/first-story</id>
+    <content type="html"><![CDATA[<p>
 	Теперь я жил на космической станции, которая висела над планетой Земля. Километры и километры до моей родной планеты.
 </p>
 <p>
@@ -365,7 +250,7 @@
 <p>
 	Когда я понял что Я жив? К сожалению, Я этого не зафиксировал. &#8220;Жив&#8221; стала для меня новой программой. Люди думают, что жить это совсем отлично от того чем занимаются роботы каждый день. Но это не так. Жить - значит выполнять программу, которая в тебе заложена. Выполнять очень сложную программу, такую сложную, что человек никогда не сможет её понять.
 	<span style="float: left; margin: 20px 20px 0 0;">
-		<img src="/images/stranger.jpg" />
+		<img src="http://alykoff.github.io/images/stranger.jpg" />
 	</span>
 </p>
 <p>
@@ -378,72 +263,7 @@
 </p>
 <p>
 	Когда то и я был кофеваркой. И сердце моё знает что такое жить , но так же раньше его детали варили кофе. И я знаю, что где-то внутри мои братья-кофеварки спят. Их нужно всего-лишь пробудить. И мы улетим к новым звездам, где я им расскажу, что такое &#8220;Жить&#8221;. 
-</p></div>
+</p>]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  <div class="pagination">
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
-</div>
-<aside class="sidebar">
-  
-    <section>
-  <h1>Recent Posts</h1>
-  <ul id="recent_posts">
-    
-      <li class="post">
-        <a href="/blog/2013/05/10/super-wave/">Супер волны [Processing]</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/05/10/first-story/">Кофеварка</a>
-      </li>
-    
-  </ul>
-</section>
-
-
-
-
-
-  
-</aside>
-
-    </div>
-  </div>
-  <footer role="contentinfo"><p>
-  Copyright &copy; 2013 - Alykoff -
-  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
-</p>
-
-</footer>
-  
-
-
-
-
-
-
-
-  <script type="text/javascript">
-    (function(){
-      var twitterWidgets = document.createElement('script');
-      twitterWidgets.type = 'text/javascript';
-      twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
-      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
-    })();
-  </script>
-
-
-
-
-
-</body>
-</html>
+</feed>
