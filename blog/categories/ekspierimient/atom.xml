@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: эксперимент | alykoff.github.io]]></title>
+  <link href="http://alykoff.github.io/blog/categories/ekspierimient/atom.xml" rel="self"/>
+  <link href="http://alykoff.github.io/"/>
+  <updated>2013-05-10T22:50:08+04:00</updated>
+  <id>http://alykoff.github.io/</id>
+  <author>
+    <name><![CDATA[Alykoff]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Супер волны [processing]]]></title>
+    <link href="http://alykoff.github.io/blog/2013/05/10/super-wave/"/>
+    <updated>2013-05-10T21:45:00+04:00</updated>
+    <id>http://alykoff.github.io/blog/2013/05/10/super-wave</id>
+    <content type="html"><![CDATA[<p>
+    "Супер волны" по мотивам Jorg Reuter's <a href="http://stachelig.de/">SinusPlasma sketch</a>
+</p>
+
+
+<p>
+  Поначалу я начал изучать вышеназванную SinusPlasma, причем изучаемая мною реализация была написана на Scala. Напомню, на всякий случай, что processing реализован для JVM, а так же и в виде javascript-библиотеки, которая транслирует написанный код processing'а в javascript.
+</p>
+
+
+<p>
+  Я уже ипомянул, что использовал scala в своих экспериментах, в силу того, что мне нравится этот язык (меньше писать по сравнению с Java).
+  После того как я получил результат, который был приятен моему глазу я решил портировать его на processing.js (и это было не сложно!) и вот что получилось:
+</p>
+
+
+
+
+<script src="http://alykoff.github.io/javascripts/libs/processing-1.4.1.min.js"></script>
+
+
+<script type="text/processing" data-processing-target="mycanvas">
+    int SCREENWIDTH = 220;
+    int SCREENHEIGHT = 120;
+    int GRADIENTLEN = 150;// magnifair
+    int SPEEDUP = 1; // changes speed  
+    int SWINGLEN = GRADIENTLEN;  // magnitude moving blocks (color diversity)
+    int SWINGMAX = GRADIENTLEN * 3 - 1; // this param affect to color sheme (then his more then colors more)
+    int[] colorGrad = new int[GRADIENTLEN];
+    int minX = 0;
+    int maxX = 0;
+    int minY = 0;
+    int maxY = 0;
+    void setup () {
+      background(200);
+      size( SCREENWIDTH, SCREENHEIGHT);   
+      makeGradient();
+      setMaxMinX();
+      setMaxMinY();
+    }
+    void draw () {
+      loadPixels();
+      int i = 0;
+      int t = frameCount * SPEEDUP;
+      for (int y = minY; y < maxY; y++) {
+          for (int x = minX; x < maxX; x++) {
+            set(x, y, gradient(int(x*x/4) + int(y*y/4) + t));
+            i = i + 1;
+          }
+      }
+      updatePixels();
+    }
+    void makeGradient() {
+      int arrlen = GRADIENTLEN;
+      int rf = 4;
+      int gf = 2;
+      int bf = 1;
+      int rd = arrlen;
+      int gd = arrlen / gf;
+      int bd = arrlen / bf / 2;
+      for (int i = 0; i < arrlen; i++) {
+        int r = cos256(arrlen / rf, i + rd );
+        int g = cos256(arrlen / gf, i + gd) / 2;
+        int b = cos256(arrlen / bf, i + bd) / 2;
+        colorGrad[i] = color(r, g, b);
+      }
+    }
+    int cos256(int amplitude, int x) {
+      return int(cos(x * TWO_PI / amplitude) * 127) + 127;
+    }
+    int gradient(int i) {
+      return colorGrad[i % GRADIENTLEN];
+    }
+
+    void setMaxMinX() {
+      minX = 0;
+      maxX = 220;
+    }
+    void setMaxMinY() {
+      mixY = 0;
+      maxY = 120;
+    }
+ </script>
+
+
+<p> <canvas style="width: auto; height: 60px;" id="mycanvas" class="canvas"></canvas></p>
+
+<p>
+  А вот и код:
+</p>
+
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+<span class='line-number'>70</span>
+<span class='line-number'>71</span>
+<span class='line-number'>72</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kr">int</span> <span class="nx">SCREENWIDTH</span> <span class="o">=</span> <span class="mi">220</span><span class="p">;</span>
+</span><span class='line'><span class="kr">int</span> <span class="nx">SCREENHEIGHT</span> <span class="o">=</span> <span class="mi">120</span><span class="p">;</span>
+</span><span class='line'><span class="kr">int</span> <span class="nx">GRADIENTLEN</span> <span class="o">=</span> <span class="mi">150</span><span class="p">;</span><span class="c1">// magnifair</span>
+</span><span class='line'><span class="kr">int</span> <span class="nx">SPEEDUP</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// changes speed&lt;br/&gt;</span>
+</span><span class='line'><span class="kr">int</span> <span class="nx">SWINGLEN</span> <span class="o">=</span> <span class="nx">GRADIENTLEN</span><span class="p">;</span>  <span class="c1">// magnitude moving blocks (color diversity)</span>
+</span><span class='line'><span class="kr">int</span> <span class="nx">SWINGMAX</span> <span class="o">=</span> <span class="nx">GRADIENTLEN</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">&amp;</span><span class="nx">ndash</span><span class="p">;</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// this param affect to color sheme (then his more then colors more)</span>
+</span><span class='line'><span class="kr">int</span><span class="p">[]</span> <span class="nx">colorGrad</span> <span class="o">=</span> <span class="k">new</span> <span class="kr">int</span><span class="p">[</span><span class="nx">GRADIENTLEN</span><span class="p">];</span>
+</span><span class='line'><span class="kr">int</span> <span class="nx">minX</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'><span class="kr">int</span> <span class="nx">maxX</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'><span class="kr">int</span> <span class="nx">minY</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'><span class="kr">int</span> <span class="nx">maxY</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="k">void</span> <span class="nx">setup</span> <span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">background</span><span class="p">(</span><span class="mi">200</span><span class="p">);</span>
+</span><span class='line'>  <span class="nx">size</span><span class="p">(</span> <span class="nx">SCREENWIDTH</span><span class="p">,</span> <span class="nx">SCREENHEIGHT</span><span class="p">);</span> <span class="o">&lt;</span><span class="nx">br</span><span class="o">/&gt;</span>
+</span><span class='line'>  <span class="nx">makeGradient</span><span class="p">();</span>
+</span><span class='line'>  <span class="nx">setMaxMinX</span><span class="p">();</span>
+</span><span class='line'>  <span class="nx">setMaxMinY</span><span class="p">();</span>
+</span><span class='line'><span class="p">}</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="k">void</span> <span class="nx">draw</span> <span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">loadPixels</span><span class="p">();</span>
+</span><span class='line'>  <span class="kr">int</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'>  <span class="kr">int</span> <span class="nx">t</span> <span class="o">=</span> <span class="nx">frameCount</span> <span class="o">*</span> <span class="nx">SPEEDUP</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">for</span> <span class="p">(</span><span class="kr">int</span> <span class="nx">y</span> <span class="o">=</span> <span class="nx">minY</span><span class="p">;</span> <span class="nx">y</span> <span class="o">&amp;</span><span class="nx">lt</span><span class="p">;</span> <span class="nx">maxY</span><span class="p">;</span> <span class="nx">y</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span><span class="o">&gt;&lt;</span><span class="nx">code</span><span class="o">&gt;</span><span class="k">for</span> <span class="p">(</span><span class="kr">int</span> <span class="nx">x</span> <span class="o">=</span> <span class="nx">minX</span><span class="p">;</span> <span class="nx">x</span> <span class="o">&amp;</span><span class="nx">lt</span><span class="p">;</span> <span class="nx">maxX</span><span class="p">;</span> <span class="nx">x</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">set</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">,</span> <span class="nx">gradient</span><span class="p">(</span><span class="kr">int</span><span class="p">(</span><span class="nx">x</span><span class="o">*</span><span class="nx">x</span><span class="o">/</span><span class="mi">4</span><span class="p">)</span> <span class="o">+</span> <span class="kr">int</span><span class="p">(</span><span class="nx">y</span><span class="o">*</span><span class="nx">y</span><span class="o">/</span><span class="mi">4</span><span class="p">)</span> <span class="o">+</span> <span class="nx">t</span><span class="p">));</span>
+</span><span class='line'>  <span class="nx">i</span> <span class="o">=</span> <span class="nx">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="o">&lt;</span><span class="err">/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>  <span class="p">}</span>
+</span><span class='line'>  <span class="nx">updatePixels</span><span class="p">();</span>
+</span><span class='line'><span class="p">}</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="k">void</span> <span class="nx">makeGradient</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="kr">int</span> <span class="nx">arrlen</span> <span class="o">=</span> <span class="nx">GRADIENTLEN</span><span class="p">;</span>
+</span><span class='line'>  <span class="kr">int</span> <span class="nx">rf</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+</span><span class='line'>  <span class="kr">int</span> <span class="nx">gf</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+</span><span class='line'>  <span class="kr">int</span> <span class="nx">bf</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</span><span class='line'>  <span class="kr">int</span> <span class="nx">rd</span> <span class="o">=</span> <span class="nx">arrlen</span><span class="p">;</span>
+</span><span class='line'>  <span class="kr">int</span> <span class="nx">gd</span> <span class="o">=</span> <span class="nx">arrlen</span> <span class="o">/</span> <span class="nx">gf</span><span class="p">;</span>
+</span><span class='line'>  <span class="kr">int</span> <span class="nx">bd</span> <span class="o">=</span> <span class="nx">arrlen</span> <span class="o">/</span> <span class="nx">bf</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">for</span> <span class="p">(</span><span class="kr">int</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&amp;</span><span class="nx">lt</span><span class="p">;</span> <span class="nx">arrlen</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span><span class="o">&gt;&lt;</span><span class="nx">code</span><span class="o">&gt;</span><span class="kr">int</span> <span class="nx">r</span> <span class="o">=</span> <span class="nx">cos256</span><span class="p">(</span><span class="nx">arrlen</span> <span class="o">/</span> <span class="nx">rf</span><span class="p">,</span> <span class="nx">i</span> <span class="o">+</span> <span class="nx">rd</span> <span class="p">);</span>
+</span><span class='line'><span class="kr">int</span> <span class="nx">g</span> <span class="o">=</span> <span class="nx">cos256</span><span class="p">(</span><span class="nx">arrlen</span> <span class="o">/</span> <span class="nx">gf</span><span class="p">,</span> <span class="nx">i</span> <span class="o">+</span> <span class="nx">gd</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+</span><span class='line'><span class="kr">int</span> <span class="nx">b</span> <span class="o">=</span> <span class="nx">cos256</span><span class="p">(</span><span class="nx">arrlen</span> <span class="o">/</span> <span class="nx">bf</span><span class="p">,</span> <span class="nx">i</span> <span class="o">+</span> <span class="nx">bd</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+</span><span class='line'><span class="nx">colorGrad</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">=</span> <span class="nx">color</span><span class="p">(</span><span class="nx">r</span><span class="p">,</span> <span class="nx">g</span><span class="p">,</span> <span class="nx">b</span><span class="p">);</span>
+</span><span class='line'><span class="o">&lt;</span><span class="err">/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="kr">int</span> <span class="nx">cos256</span><span class="p">(</span><span class="kr">int</span> <span class="nx">amplitude</span><span class="p">,</span> <span class="kr">int</span> <span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">return</span> <span class="kr">int</span><span class="p">(</span><span class="nx">cos</span><span class="p">(</span><span class="nx">x</span> <span class="o">*</span> <span class="nx">TWO_PI</span> <span class="o">/</span> <span class="nx">amplitude</span><span class="p">)</span> <span class="o">*</span> <span class="mi">127</span><span class="p">)</span> <span class="o">+</span> <span class="mi">127</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="kr">int</span> <span class="nx">gradient</span><span class="p">(</span><span class="kr">int</span> <span class="nx">i</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">return</span> <span class="nx">colorGrad</span><span class="p">[</span><span class="nx">i</span> <span class="o">%</span> <span class="nx">GRADIENTLEN</span><span class="p">];</span>
+</span><span class='line'><span class="p">}</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="k">void</span> <span class="nx">setMaxMinX</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">minX</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'>  <span class="nx">maxX</span> <span class="o">=</span> <span class="mi">220</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="k">void</span> <span class="nx">setMaxMinY</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">mixY</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'>  <span class="nx">maxY</span> <span class="o">=</span> <span class="mi">120</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+]]></content>
+  </entry>
+  
+</feed>
