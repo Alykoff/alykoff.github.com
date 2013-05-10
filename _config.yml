@@ -2,10 +2,10 @@
 #      Main Configs       #
 # ----------------------- #
 
-url: http://yoursite.com
-title: My Octopress Blog
-subtitle: A blogging framework for hackers.
-author: Your Name
+url: http://alykoff.github.io
+title: alykoff.github.io
+subtitle: влияние наблюдения на предмет наблюдения
+author: Alykoff 
 simple_search: http://google.com/search
 description:
 
@@ -94,7 +94,7 @@ disqus_short_name:
 disqus_show_comment_count: false
 
 # Google Analytics
-google_analytics_tracking_id:
+google_analytics_tracking_id: UA-40686601-1
 
 # Facebook Like
 facebook_like: false
