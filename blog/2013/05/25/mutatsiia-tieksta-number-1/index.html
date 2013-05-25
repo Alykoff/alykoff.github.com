@@ -53,7 +53,7 @@
   <header role="banner"><hgroup>
   <h1><a href="/">alykoff.github.io</a></h1>
   
-    <h2>влияние наблюдения на предмет наблюдения</h2>
+    <h2>влияние предмета наблюдения на наблюдателя посредством наблюдения</h2>
   
 </hgroup>
 
@@ -144,9 +144,10 @@
 	        },
         	paragrafsText = getCurrentTexts(),
         	getMutateSign = function(sign) {
-        		if (Math.random() > MUTATE_PROBABILITY) {
+        		if (Math.random() > MUTATE_PROBABILITY || (typeof sign !== 'string')) {
 					return sign;
 				}
+				sign = sign.toLowerCase();
                 for (var i = 0, lengthDictonary = DICTONARY.length; i < lengthDictonary; i++) {
                     if (DICTONARY[i].letter === sign) {
                             return DICTONARY[i].brakeLetter;

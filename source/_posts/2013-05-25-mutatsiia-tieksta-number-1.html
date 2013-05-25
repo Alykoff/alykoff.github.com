@@ -47,9 +47,10 @@ preview: "Текст взятый из \"Мастера и Маргариты\",
 	        },
         	paragrafsText = getCurrentTexts(),
         	getMutateSign = function(sign) {
-        		if (Math.random() > MUTATE_PROBABILITY) {
+        		if (Math.random() > MUTATE_PROBABILITY || (typeof sign !== 'string')) {
 					return sign;
 				}
+				sign = sign.toLowerCase();
                 for (var i = 0, lengthDictonary = DICTONARY.length; i < lengthDictonary; i++) {
                     if (DICTONARY[i].letter === sign) {
                             return DICTONARY[i].brakeLetter;

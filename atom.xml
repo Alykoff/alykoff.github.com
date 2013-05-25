@@ -4,7 +4,7 @@
   <title><![CDATA[alykoff.github.io]]></title>
   <link href="http://Alykoff.github.io/atom.xml" rel="self"/>
   <link href="http://Alykoff.github.io/"/>
-  <updated>2013-05-25T15:05:13+04:00</updated>
+  <updated>2013-05-25T16:07:56+04:00</updated>
   <id>http://Alykoff.github.io/</id>
   <author>
     <name><![CDATA[Alykoff]]></name>
@@ -56,9 +56,10 @@
 	        },
         	paragrafsText = getCurrentTexts(),
         	getMutateSign = function(sign) {
-        		if (Math.random() > MUTATE_PROBABILITY) {
+        		if (Math.random() > MUTATE_PROBABILITY || (typeof sign !== 'string')) {
 					return sign;
 				}
+				sign = sign.toLowerCase();
                 for (var i = 0, lengthDictonary = DICTONARY.length; i < lengthDictonary; i++) {
                     if (DICTONARY[i].letter === sign) {
                             return DICTONARY[i].brakeLetter;
