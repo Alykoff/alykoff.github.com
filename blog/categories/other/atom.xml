@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: other | alykoff.github.io]]></title>
-  <link href="http://alykoff.github.io/blog/categories/other/atom.xml" rel="self"/>
-  <link href="http://alykoff.github.io/"/>
-  <updated>2013-05-10T22:50:08+04:00</updated>
-  <id>http://alykoff.github.io/</id>
+  <link href="http://Alykoff.github.io/blog/categories/other/atom.xml" rel="self"/>
+  <link href="http://Alykoff.github.io/"/>
+  <updated>2013-05-25T13:22:25+04:00</updated>
+  <id>http://Alykoff.github.io/</id>
   <author>
     <name><![CDATA[Alykoff]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Кофеварка]]></title>
-    <link href="http://alykoff.github.io/blog/2013/05/10/first-story/"/>
+    <link href="http://Alykoff.github.io/blog/2013/05/10/first-story/"/>
     <updated>2013-05-10T14:56:00+04:00</updated>
-    <id>http://alykoff.github.io/blog/2013/05/10/first-story</id>
+    <id>http://Alykoff.github.io/blog/2013/05/10/first-story</id>
     <content type="html"><![CDATA[<p>
     Теперь я жил на космической станции, которая висела над планетой Земля. Километры и километры до моей родной планеты.
 </p>
@@ -36,7 +36,7 @@
 <p>
     Когда я понял что Я жив? К сожалению, Я этого не зафиксировал. "Жив" стала для меня новой программой. Люди думают, что жить это совсем отлично от того чем занимаются роботы каждый день. Но это не так. Жить - значит выполнять программу, которая в тебе заложена. Выполнять очень сложную программу, такую сложную, что человек никогда не сможет её понять.
     <span style="float: left; margin: 20px 20px 0 0;">
-        <img src="http://alykoff.github.io/images/stranger.jpg" />
+        <img src="http://Alykoff.github.io/images/stranger.jpg" />
     </span>
 </p>
 

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[alykoff.github.io]]></title>
-  <link href="http://alykoff.github.io/atom.xml" rel="self"/>
-  <link href="http://alykoff.github.io/"/>
-  <updated>2013-05-10T22:50:08+04:00</updated>
-  <id>http://alykoff.github.io/</id>
+  <link href="http://Alykoff.github.io/atom.xml" rel="self"/>
+  <link href="http://Alykoff.github.io/"/>
+  <updated>2013-05-25T13:22:25+04:00</updated>
+  <id>http://Alykoff.github.io/</id>
   <author>
     <name><![CDATA[Alykoff]]></name>
     
@@ -14,22 +14,121 @@
 
   
   <entry>
+    <title type="html"><![CDATA[Мутация текста #1]]></title>
+    <link href="http://Alykoff.github.io/blog/2013/05/25/mutatsiia-tieksta-number-1/"/>
+    <updated>2013-05-25T11:17:00+04:00</updated>
+    <id>http://Alykoff.github.io/blog/2013/05/25/mutatsiia-tieksta-number-1</id>
+    <content type="html"><![CDATA[<p class="text">
+	Дверь наверху открыли и закрыли. &#8220;Он  вошел!&#8221;  -  подумал  Латунский  и
+	двинулся вниз. Сердце его забилось сильно.  Вот  покинутая  швейцарская  под
+	лестницей, в ней никого  нет.  Но  прежде  всего  Латунский  оглянулся,  ища
+	чемодан и другие вещи. Ни чемодана, ни белья на  полу  внизу  не  было.  Вне
+	всяких сомнений, их украли, пока Латунский спускался. Он сам подивился тому,
+	как мало это его расстроило. Латунский шмыгнул  в  швейцарскую  и  засел  за
+	грязным разбитым стеклом.
+</p>
+<p class="text">
+	Прошло, минут десять томительного ожидания,  и  Латунскому  показалось,
+	что их гораздо более прошло. За это время только один  человек  пробежал  по
+	лестнице, насвистывая знаменитую песню &#8220;гоп со смыком&#8221;,  и,  судя  по  шуму,
+	скрылся во втором этаже.
+</p>
+<script>
+	$(function() {
+			var dicTuple = function(letter, brakeLetter) {
+				this.letter = letter;
+				this.brakeLetter = brakeLetter;
+			};
+			var DICTONARY = [
+					new dicTuple('а', 'i'),
+					new dicTuple('б', 'v'),
+					new dicTuple('в', 'l'),
+					new dicTuple('г', 'F'),
+					new dicTuple('д', 'd'),
+					new dicTuple('е', 'r'),
+					new dicTuple('ё', 'I'),
+					new dicTuple('ж', 'j'),
+					new dicTuple('з', 'x'),
+					new dicTuple('и', 'o'),
+					new dicTuple('й', 'q'),
+					new dicTuple('к', 'K'),
+					new dicTuple('л', 'L'),
+					new dicTuple('м', 'w'),
+					new dicTuple('н', 'n'),
+					new dicTuple('о', '0'),
+					new dicTuple('п', 'R'),
+					new dicTuple('р', 'r'),
+					new dicTuple('с', 's'),
+					new dicTuple('т', 't'),
+					new dicTuple('у', 'u'),
+					new dicTuple('ф', 'f'),
+					new dicTuple('х', 'h'),
+					new dicTuple('ц', 'C'),
+					new dicTuple('ч', '2'),
+					new dicTuple('ш', 's'),
+					new dicTuple('щ', '8'),
+					new dicTuple('ъ', '\\'),
+					new dicTuple('ы', 'b'),
+					new dicTuple('ь', '/'),
+					new dicTuple('э', ','),
+					new dicTuple('ю', 'Y'),
+					new dicTuple('я', 'D')
+			];
+			var textEls = document.getElementsByClassName('text');
+			var paragrafsText = [];
+			for (var i = 0, textLengh = textEls.length; i < textLengh; i++) {
+				paragrafsText[paragrafsText.length] = textEls[i].innerText;
+			}
+			var getMutateSign = function(sign) {
+				if (typeof sign === 'string') {
+					sign = sign.toLowerCase();
+				}
+				for (var i = 0, lengthDictonary = DICTONARY.length; i < lengthDictonary; i++) {
+					if (DICTONARY[i].letter === sign) {
+						return DICTONARY[i].brakeLetter;
+					}
+				}
+				return sign;
+			};
+
+			var mutationParagrafs = function() {
+				var MUTATE_PROBABILITY = .5;
+
+				for (var i = 0, lenghtTextEL = textEls.length; i < lenghtTextEL; i++) {
+					var text = paragrafsText[i].split(''),
+						mutateText = [];
+					for (var j = 0, lenghtText = text.length; j < lenghtText; j++) {
+						mutateText[j] = 
+							(text[j] !== ' ' && Math.random() <= MUTATE_PROBABILITY) ?
+							getMutateSign(text[j]) :
+							text[j];
+					}
+					textEls[i].innerText = mutateText.join('');
+				}
+			};
+			setInterval(mutationParagrafs, 100);
+	});
+
+</script>]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Супер волны [processing]]]></title>
-    <link href="http://alykoff.github.io/blog/2013/05/10/super-wave/"/>
+    <link href="http://Alykoff.github.io/blog/2013/05/10/super-wave/"/>
     <updated>2013-05-10T21:45:00+04:00</updated>
-    <id>http://alykoff.github.io/blog/2013/05/10/super-wave</id>
+    <id>http://Alykoff.github.io/blog/2013/05/10/super-wave</id>
     <content type="html"><![CDATA[<p>
     &#8220;Супер волны&#8221; по мотивам Jorg Reuter&#8217;s <a href="http://stachelig.de/">SinusPlasma sketch</a>
 </p>
 <p>
-  Поначалу я начал изучать вышеназванную SinusPlasma, причем изучаемая мною реализация была написана на Scala. Напомню, на всякий случай, что processing реализован для JVM, а так же и в виде javascript-библиотеки, которая транслирует написанный код processing&#8217;а в javascript.
+  Поначалу я начал изучать вышеназванную SinusPlasma, причем изучаемая мною реализация была написана на Scala. Напомню, processing реализован для <acronym title="Java Virtual Machine">JVM</acronym>, а так же в виде javascript-библиотеки, которая транслирует написанный код processing&#8217;а в javascript.
 </p>
 <p>
   Я уже ипомянул, что использовал scala в своих экспериментах, в силу того, что мне нравится этот язык (меньше писать по сравнению с Java).
   После того как я получил результат, который был приятен моему глазу я решил портировать его на processing.js (и это было не сложно!) и вот что получилось:
 </p>
 
-<script src="http://alykoff.github.io/javascripts/libs/processing-1.4.1.min.js"></script>
+<script src="http://Alykoff.github.io/javascripts/libs/processing-1.4.1.min.js"></script>
 <script type="text/processing" data-processing-target="mycanvas">
     int SCREENWIDTH = 220;
     int SCREENHEIGHT = 120;
@@ -235,9 +334,9 @@
   
   <entry>
     <title type="html"><![CDATA[Кофеварка]]></title>
-    <link href="http://alykoff.github.io/blog/2013/05/10/first-story/"/>
+    <link href="http://Alykoff.github.io/blog/2013/05/10/first-story/"/>
     <updated>2013-05-10T14:56:00+04:00</updated>
-    <id>http://alykoff.github.io/blog/2013/05/10/first-story</id>
+    <id>http://Alykoff.github.io/blog/2013/05/10/first-story</id>
     <content type="html"><![CDATA[<p>
 	Теперь я жил на космической станции, которая висела над планетой Земля. Километры и километры до моей родной планеты.
 </p>
@@ -250,7 +349,7 @@
 <p>
 	Когда я понял что Я жив? К сожалению, Я этого не зафиксировал. &#8220;Жив&#8221; стала для меня новой программой. Люди думают, что жить это совсем отлично от того чем занимаются роботы каждый день. Но это не так. Жить - значит выполнять программу, которая в тебе заложена. Выполнять очень сложную программу, такую сложную, что человек никогда не сможет её понять.
 	<span style="float: left; margin: 20px 20px 0 0;">
-		<img src="http://alykoff.github.io/images/stranger.jpg" />
+		<img src="http://Alykoff.github.io/images/stranger.jpg" />
 	</span>
 </p>
 <p>

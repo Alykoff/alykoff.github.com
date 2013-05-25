@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: experiment | alykoff.github.io]]></title>
+  <link href="http://Alykoff.github.io/blog/categories/experiment/atom.xml" rel="self"/>
+  <link href="http://Alykoff.github.io/"/>
+  <updated>2013-05-25T13:22:25+04:00</updated>
+  <id>http://Alykoff.github.io/</id>
+  <author>
+    <name><![CDATA[Alykoff]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Мутация текста #1]]></title>
+    <link href="http://Alykoff.github.io/blog/2013/05/25/mutatsiia-tieksta-number-1/"/>
+    <updated>2013-05-25T11:17:00+04:00</updated>
+    <id>http://Alykoff.github.io/blog/2013/05/25/mutatsiia-tieksta-number-1</id>
+    <content type="html"><![CDATA[<p class="text">
+    Дверь наверху открыли и закрыли. "Он  вошел!"  -  подумал  Латунский  и
+    двинулся вниз. Сердце его забилось сильно.  Вот  покинутая  швейцарская  под
+    лестницей, в ней никого  нет.  Но  прежде  всего  Латунский  оглянулся,  ища
+    чемодан и другие вещи. Ни чемодана, ни белья на  полу  внизу  не  было.  Вне
+    всяких сомнений, их украли, пока Латунский спускался. Он сам подивился тому,
+    как мало это его расстроило. Латунский шмыгнул  в  швейцарскую  и  засел  за
+    грязным разбитым стеклом.
+</p>
+
+
+<p class="text">
+    Прошло, минут десять томительного ожидания,  и  Латунскому  показалось,
+    что их гораздо более прошло. За это время только один  человек  пробежал  по
+    лестнице, насвистывая знаменитую песню "гоп со смыком",  и,  судя  по  шуму,
+    скрылся во втором этаже.
+</p>
+
+
+<script>
+    $(function() {
+            var dicTuple = function(letter, brakeLetter) {
+                this.letter = letter;
+                this.brakeLetter = brakeLetter;
+            };
+            var DICTONARY = [
+                    new dicTuple('а', 'i'),
+                    new dicTuple('б', 'v'),
+                    new dicTuple('в', 'l'),
+                    new dicTuple('г', 'F'),
+                    new dicTuple('д', 'd'),
+                    new dicTuple('е', 'r'),
+                    new dicTuple('ё', 'I'),
+                    new dicTuple('ж', 'j'),
+                    new dicTuple('з', 'x'),
+                    new dicTuple('и', 'o'),
+                    new dicTuple('й', 'q'),
+                    new dicTuple('к', 'K'),
+                    new dicTuple('л', 'L'),
+                    new dicTuple('м', 'w'),
+                    new dicTuple('н', 'n'),
+                    new dicTuple('о', '0'),
+                    new dicTuple('п', 'R'),
+                    new dicTuple('р', 'r'),
+                    new dicTuple('с', 's'),
+                    new dicTuple('т', 't'),
+                    new dicTuple('у', 'u'),
+                    new dicTuple('ф', 'f'),
+                    new dicTuple('х', 'h'),
+                    new dicTuple('ц', 'C'),
+                    new dicTuple('ч', '2'),
+                    new dicTuple('ш', 's'),
+                    new dicTuple('щ', '8'),
+                    new dicTuple('ъ', '\\'),
+                    new dicTuple('ы', 'b'),
+                    new dicTuple('ь', '/'),
+                    new dicTuple('э', ','),
+                    new dicTuple('ю', 'Y'),
+                    new dicTuple('я', 'D')
+            ];
+            var textEls = document.getElementsByClassName('text');
+            var paragrafsText = [];
+            for (var i = 0, textLengh = textEls.length; i < textLengh; i++) {
+                paragrafsText[paragrafsText.length] = textEls[i].innerText;
+            }
+            var getMutateSign = function(sign) {
+                if (typeof sign === 'string') {
+                    sign = sign.toLowerCase();
+                }
+                for (var i = 0, lengthDictonary = DICTONARY.length; i < lengthDictonary; i++) {
+                    if (DICTONARY[i].letter === sign) {
+                        return DICTONARY[i].brakeLetter;
+                    }
+                }
+                return sign;
+            };
+
+            var mutationParagrafs = function() {
+                var MUTATE_PROBABILITY = .5;
+
+                for (var i = 0, lenghtTextEL = textEls.length; i < lenghtTextEL; i++) {
+                    var text = paragrafsText[i].split(''),
+                        mutateText = [];
+                    for (var j = 0, lenghtText = text.length; j < lenghtText; j++) {
+                        mutateText[j] = 
+                            (text[j] !== ' ' && Math.random() <= MUTATE_PROBABILITY) ?
+                            getMutateSign(text[j]) :
+                            text[j];
+                    }
+                    textEls[i].innerText = mutateText.join('');
+                }
+            };
+            setInterval(mutationParagrafs, 100);
+    });
+
+</script>
+
+]]></content>
+  </entry>
+  
+</feed>

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: эксперимент | alykoff.github.io]]></title>
-  <link href="http://alykoff.github.io/blog/categories/ekspierimient/atom.xml" rel="self"/>
-  <link href="http://alykoff.github.io/"/>
-  <updated>2013-05-10T22:50:08+04:00</updated>
-  <id>http://alykoff.github.io/</id>
+  <link href="http://Alykoff.github.io/blog/categories/ekspierimient/atom.xml" rel="self"/>
+  <link href="http://Alykoff.github.io/"/>
+  <updated>2013-05-25T13:22:25+04:00</updated>
+  <id>http://Alykoff.github.io/</id>
   <author>
     <name><![CDATA[Alykoff]]></name>
     
@@ -15,16 +15,16 @@
   
   <entry>
     <title type="html"><![CDATA[Супер волны [processing]]]></title>
-    <link href="http://alykoff.github.io/blog/2013/05/10/super-wave/"/>
+    <link href="http://Alykoff.github.io/blog/2013/05/10/super-wave/"/>
     <updated>2013-05-10T21:45:00+04:00</updated>
-    <id>http://alykoff.github.io/blog/2013/05/10/super-wave</id>
+    <id>http://Alykoff.github.io/blog/2013/05/10/super-wave</id>
     <content type="html"><![CDATA[<p>
     "Супер волны" по мотивам Jorg Reuter's <a href="http://stachelig.de/">SinusPlasma sketch</a>
 </p>
 
 
 <p>
-  Поначалу я начал изучать вышеназванную SinusPlasma, причем изучаемая мною реализация была написана на Scala. Напомню, на всякий случай, что processing реализован для JVM, а так же и в виде javascript-библиотеки, которая транслирует написанный код processing'а в javascript.
+  Поначалу я начал изучать вышеназванную SinusPlasma, причем изучаемая мною реализация была написана на Scala. Напомню, processing реализован для <acronym title="Java Virtual Machine">JVM</acronym>, а так же в виде javascript-библиотеки, которая транслирует написанный код processing'а в javascript.
 </p>
 
 
@@ -36,7 +36,7 @@
 
 
 
-<script src="http://alykoff.github.io/javascripts/libs/processing-1.4.1.min.js"></script>
+<script src="http://Alykoff.github.io/javascripts/libs/processing-1.4.1.min.js"></script>
 
 
 <script type="text/processing" data-processing-target="mycanvas">
