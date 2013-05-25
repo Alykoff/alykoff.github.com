@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: 
 
-Sitemap: http://alykoff.github.io/sitemap.xml 
+Sitemap: http://Alykoff.github.io/sitemap.xml 

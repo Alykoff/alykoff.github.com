@@ -26,78 +26,49 @@ preview: "Текст взятый из \"Мастера и Маргариты\",
 </p>
 <script>
 	$(function() {
-			var dicTuple = function(letter, brakeLetter) {
-				this.letter = letter;
-				this.brakeLetter = brakeLetter;
-			};
-			var DICTONARY = [
-					new dicTuple('а', 'i'),
-					new dicTuple('б', 'v'),
-					new dicTuple('в', 'l'),
-					new dicTuple('г', 'F'),
-					new dicTuple('д', 'd'),
-					new dicTuple('е', 'r'),
-					new dicTuple('ё', 'I'),
-					new dicTuple('ж', 'j'),
-					new dicTuple('з', 'x'),
-					new dicTuple('и', 'o'),
-					new dicTuple('й', 'q'),
-					new dicTuple('к', 'K'),
-					new dicTuple('л', 'L'),
-					new dicTuple('м', 'w'),
-					new dicTuple('н', 'n'),
-					new dicTuple('о', '0'),
-					new dicTuple('п', 'R'),
-					new dicTuple('р', 'r'),
-					new dicTuple('с', 's'),
-					new dicTuple('т', 't'),
-					new dicTuple('у', 'u'),
-					new dicTuple('ф', 'f'),
-					new dicTuple('х', 'h'),
-					new dicTuple('ц', 'C'),
-					new dicTuple('ч', '2'),
-					new dicTuple('ш', 's'),
-					new dicTuple('щ', '8'),
-					new dicTuple('ъ', '\\'),
-					new dicTuple('ы', 'b'),
-					new dicTuple('ь', '/'),
-					new dicTuple('э', ','),
-					new dicTuple('ю', 'Y'),
-					new dicTuple('я', 'D')
-			];
-			var textEls = document.getElementsByClassName('text');
-			var paragrafsText = [];
-			for (var i = 0, textLengh = textEls.length; i < textLengh; i++) {
-				paragrafsText[paragrafsText.length] = textEls[i].innerText;
-			}
-			var getMutateSign = function(sign) {
-				if (typeof sign === 'string') {
-					sign = sign.toLowerCase();
+        var dicTuple = function(letter, brakeLetter) {
+                this.letter = letter;
+                this.brakeLetter = brakeLetter;
+        	},
+        	DICTONARY = [
+                new dicTuple('а', 'i'), new dicTuple('б', 'v'), new dicTuple('в', 'l'), new dicTuple('г', 'F'), new dicTuple('д', 'd'), new dicTuple('е', 'r'), new dicTuple('ё', 'I'), new dicTuple('ж', 'j'), new dicTuple('з', 'x'), new dicTuple('и', 'o'), new dicTuple('й', 'q'), new dicTuple('к', 'K'), new dicTuple('л', 'L'), new dicTuple('м', 'w'), new dicTuple('н', 'n'), new dicTuple('о', '0'), new dicTuple('п', 'R'), new dicTuple('р', 'r'), new dicTuple('с', 's'), new dicTuple('т', 't'), new dicTuple('у', 'u'), new dicTuple('ф', 'f'), new dicTuple('х', 'h'), new dicTuple('ц', 'C'), new dicTuple('ч', '2'), new dicTuple('ш', 's'), new dicTuple('щ', '8'), new dicTuple('ъ', '\\'), new dicTuple('ы', 'b'), new dicTuple('ь', '/'), new dicTuple('э', ','), new dicTuple('ю', 'Y'), new dicTuple('я', 'D')
+        	],
+        	MUTATE_PROBABILITY = .5,
+        	elements = document.getElementsByClassName('text'),
+        	NODE_TEXT_NAME = ('innerText' in document.getElementsByTagName('html')[0]) ? "innerText" : "textContent", // for cross-browsing
+        	getCurrentTexts = function() {
+	            var texts = [];
+	            for (var i = 0, elementsLengh = elements.length; i < elementsLengh; i++) {
+	                var textEl = elements[i],
+	                        text = textEl[NODE_TEXT_NAME];
+	                texts.push(text);
+	            }
+	            return texts;
+	        },
+        	paragrafsText = getCurrentTexts(),
+        	getMutateSign = function(sign) {
+        		if (Math.random() > MUTATE_PROBABILITY) {
+					return sign;
 				}
-				for (var i = 0, lengthDictonary = DICTONARY.length; i < lengthDictonary; i++) {
-					if (DICTONARY[i].letter === sign) {
-						return DICTONARY[i].brakeLetter;
-					}
-				}
-				return sign;
-			};
+                for (var i = 0, lengthDictonary = DICTONARY.length; i < lengthDictonary; i++) {
+                    if (DICTONARY[i].letter === sign) {
+                            return DICTONARY[i].brakeLetter;
+                    }
+                }
+                return sign;
+	        },
+	        mutation = function() {
+	            for (var i = 0, lenghtTextEL = elements.length; i < lenghtTextEL; i++) {
+	                var text = paragrafsText[i].split('');
+	                var mutateText = [];
+	                for (var j = 0, lenghtText = text.length; j < lenghtText; j++) {
+	                        mutateText[j] = getMutateSign(text[j])
+	                }
+	                elements[i][NODE_TEXT_NAME] = mutateText.join('');
+	            }
+	        };
 
-			var mutationParagrafs = function() {
-				var MUTATE_PROBABILITY = .5;
 
-				for (var i = 0, lenghtTextEL = textEls.length; i < lenghtTextEL; i++) {
-					var text = paragrafsText[i].split(''),
-						mutateText = [];
-					for (var j = 0, lenghtText = text.length; j < lenghtText; j++) {
-						mutateText[j] = 
-							(text[j] !== ' ' && Math.random() <= MUTATE_PROBABILITY) ?
-							getMutateSign(text[j]) :
-							text[j];
-					}
-					textEls[i].innerText = mutateText.join('');
-				}
-			};
-			setInterval(mutationParagrafs, 100);
-	});
-
+        setInterval(mutation, 200);
+    });
 </script>
