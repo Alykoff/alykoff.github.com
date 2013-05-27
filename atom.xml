@@ -4,7 +4,7 @@
   <title><![CDATA[alykoff.github.io]]></title>
   <link href="http://Alykoff.github.io/atom.xml" rel="self"/>
   <link href="http://Alykoff.github.io/"/>
-  <updated>2013-05-25T16:07:56+04:00</updated>
+  <updated>2013-05-28T00:58:15+04:00</updated>
   <id>http://Alykoff.github.io/</id>
   <author>
     <name><![CDATA[Alykoff]]></name>
@@ -12,6 +12,59 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Мутация текста #2]]></title>
+    <link href="http://Alykoff.github.io/blog/2013/05/28/mutatsiia-tieksta-number-2/"/>
+    <updated>2013-05-28T00:41:00+04:00</updated>
+    <id>http://Alykoff.github.io/blog/2013/05/28/mutatsiia-tieksta-number-2</id>
+    <content type="html"><![CDATA[<p class="text">
+Но никто не отозвался. Тут он взглянул на дверь в кабинет Берлиоза, бывшую рядом с передней, и тут, как говорится, остолбенел. На ручке двери он разглядел огромнейшую сургучную печать на веревке. &#8220;Здравствуйте! − рявкнул кто-то в голове у Степы. − Этого еще недоставало!&#8221; И тут Степины мысли побежали уже по двойному рельсовому пути, но, как всегда бывает во время катастрофы, в одну сторону и вообще черт знает куда. Головную Степину кашу трудно даже передать. Тут и чертовщина с черным беретом, холодной водкой и невероятным контрактом, − а тут еще ко всему этому, не угодно ли, и печать на двери! То есть кому хотите сказать, что Берлиоз что-то натворил, − не поверит, ей-ей, не поверит! Однако печать, вот она! Да-с…
+</p>
+<p class="text">
+И тут закопошились в мозгу у Степы какие-то неприятнейшие мыслишки о статье, которую, как назло, недавно он всучил Михаилу Александровичу для напечатания в журнале. И статья, между нами говоря, дурацкая! И никчемная, и деньги-то маленькие…
+</p>
+
+
+<script>
+$(function(){
+	var paragrafsText = [],
+    elements = document.getElementsByClassName('text'),
+    NODE_TEXT_NAME = 
+        ('innerText' in document.getElementsByTagName('html')[0]) ? 
+        "innerText" : 
+        "textContent", // for cross-browsing
+    getCurrentTexts = function() {
+        var texts = [];
+        for (var i = 0, elementsLengh = elements.length; i < elementsLengh; i++) {
+            var textEl = elements[i],
+                text = textEl[NODE_TEXT_NAME];
+            texts.push(text);
+        }
+        return texts;
+    },
+    paragrafsText = getCurrentTexts(),
+    buildWordIslands = function() {
+        for (var i = 0, paragrafsLength = paragrafsText.length; i < paragrafsLength; i++) {
+            var wordsInParagraf = paragrafsText[i].split(' '),
+                totatHtml = '',
+            	wrappedWords = document.createElement('div');
+                //SPACE = '&nbsp;';
+            elements[i][NODE_TEXT_NAME] = '';
+            for (var j = 0, wordsLength = wordsInParagraf.length; j < wordsLength; j++) {
+            	var wordEl = document.createElement('span');
+            	wordEl.className = 'word';
+            	wordEl[NODE_TEXT_NAME] = wordsInParagraf[j];
+            	wrappedWords.appendChild(wordEl);
+            }
+            elements[i].appendChild(wrappedWords);
+        }
+    };
+
+    buildWordIslands();
+});
+</script>]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Мутация текста #1]]></title>
