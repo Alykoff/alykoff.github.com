@@ -3,3 +3,16 @@ $shadow-color:	#F000FF !default;
 .site_title:hover {
 	text-shadow:	0 0 40px $shadow-color;
 }
+
+::selection {
+	background:		#994494;
+	color:			white;
+	text-shadow:	none;
+}
+
+::-moz-selection {
+	background:		#994494;
+	color:			white;
+	text-shadow:	none;
+ }
+
