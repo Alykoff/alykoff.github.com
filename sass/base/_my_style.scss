@@ -1,0 +1,5 @@
+$shadow-color:	#F000FF !default;
+
+.site_title:hover {
+	text-shadow:	0 0 40px $shadow-color;
+}

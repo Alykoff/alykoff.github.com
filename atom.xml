@@ -4,7 +4,7 @@
   <title><![CDATA[alykoff.github.io]]></title>
   <link href="http://Alykoff.github.io/atom.xml" rel="self"/>
   <link href="http://Alykoff.github.io/"/>
-  <updated>2013-06-22T18:55:56+04:00</updated>
+  <updated>2013-06-23T15:42:06+04:00</updated>
   <id>http://Alykoff.github.io/</id>
   <author>
     <name><![CDATA[Alykoff]]></name>
@@ -201,7 +201,7 @@
 </li>
 <li>
         <div class="question">
-                Если у класса-родителя есть метод, объявленный как private, может ли наследник расширить его видимость? А если protected? А сузить видимость?
+                Если у класса-родителя есть метод, объявленный как <code>private</code>, может ли наследник расширить его видимость? А если <code>protected</code>? А сузить видимость?
         </div>
         <div class="answer">
                 Действует общий принцип: расширять видимость можно, сужать нельзя. <code>Private</code> методы видны только внутри класса, для потомков они не видны. Поэтому  их и расширить нельзя.
